@@ -38,7 +38,7 @@ Built with **Python + Tkinter**. No extra dependencies. Works on **Windows**, **
 ```bash
 # Clone the repo
 git clone https://github.com/auratech0/android-multitool-universal
-cd android-mulitool-universal
+cd android-multitool-universal
 
 # No pip install needed — standard library only
 python android-multitool-universal.py
@@ -269,6 +269,7 @@ The bootloader is locked. You must unlock the bootloader first (Settings → Dev
 - [Universal Android Debloater (UAD)](https://github.com/0x192/universal-android-debloater) — package list inspiration
 - [Canta](https://github.com/samolego/Canta) — safety flag system inspiration
 - [Android Open Source Project](https://source.android.com/) — ADB & Fastboot
+- - Google themselves and everyone who gave me inspiration for making this tool
 
 ---
 
