@@ -7,6 +7,10 @@
 A powerful, safe, and beginner-friendly GUI tool for flashing custom ROMs, debloating Android devices, reading device info, and controlling your device — all without touching a terminal.
 
 Built with **Python + Tkinter**. No extra dependencies. Works on **Windows**, **Linux**, and **macOS**.
+---
+
+> [!NOTE]
+> This project is **Open Source**, but if you want to **modify**, **enhance**, or release a **derivative version**, please contact me first for **approval** and ensure proper **credits** are maintained.
 
 ---
 
@@ -33,11 +37,11 @@ Built with **Python + Tkinter**. No extra dependencies. Works on **Windows**, **
 
 ```bash
 # Clone the repo
-git clone https://github.com/auratech0/rom-flasher.git
-cd rom-flasher
+git clone https://github.com/auratech0/android-multitool-universal
+cd android-mulitool-universal
 
 # No pip install needed — standard library only
-python rom_flasher.py
+python android-multitool-universal.py
 ```
 
 ### Adding Platform Tools to PATH
