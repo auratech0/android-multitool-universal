@@ -1,6 +1,6 @@
-# ⚡ ROM Flasher & Android Device Manager
+# ⚡ ROM Flasher & Android Device Manager made for everyone
 
-*Runs on dreams and hopes, made with ♥ by [auratech0](https://github.com/auratech0)*
+*Runs on dreams and hopes, made with ❤️ by [auratech0](https://github.com/auratech0)*
 
 ---
 
