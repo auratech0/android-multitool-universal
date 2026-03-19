@@ -1,6 +1,7 @@
 # ⚡ ROM Flasher & Android Device Manager made for everyone
 
 *Runs on dreams and hopes, made with ❤️ by [auratech0](https://github.com/auratech0)*
+> **Tip:** Press **F11** for full screen — recommended for the best experience (some elements dont display correctly unless you are in Full Screen mode).
 
 ---
 
