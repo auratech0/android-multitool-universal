@@ -1,6 +1,6 @@
 """
 Android Multitool Universal  v2.0
-by auratech0  —  Runs on dreams and hopes, made with ♥
+By auratech0  —  Runs on dreams and hopes, made with ♥
 Requires: Python 3.7+  •  tkinter (stdlib)  •  Windows / Linux / macOS
 https://github.com/auratech0/android-multitool-universal
 """
