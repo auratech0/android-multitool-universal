@@ -7,3 +7,5 @@
 #
 # Linux only — if tkinter is missing:
 #   sudo apt install python3-tk
+
+# Please make sure you have these packages before running, make sure sure Android Platform Tools and Python are added to PATH
