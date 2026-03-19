@@ -1,0 +1,9 @@
+# No pip packages required.
+# 
+# You need:
+#   1. Python 3.7+          https://python.org
+#   2. Android Platform Tools (adb + fastboot)
+#                           https://developer.android.com/tools/releases/platform-tools
+#
+# Linux only — if tkinter is missing:
+#   sudo apt install python3-tk
