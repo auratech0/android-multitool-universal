@@ -18,10 +18,12 @@ Built with **Python + Tkinter**. No extra dependencies. Works on **Windows**, **
 
 | Tab | What it does |
 |-----|-------------|
-| ⚡ **Flash** | Flash recovery, boot, vendor, system, vbmeta images and ROM ZIPs via Fastboot or ADB Sideload. Includes wipe operations. |
-| 🗑 **Debloat** | Remove bloatware with AUD-style presets (Simple) or a full live package list (Advanced). Safety-flagged like Canta. |
-| 📱 **Device Info** | Read all `getprop` values and `fastboot getvar all` output in one click. |
-| 🔄 **Reboot** | Reboot to System, Recovery, Bootloader, Fastboot (userspace), Sideload, or Power Off — both ADB and Fastboot. |
+| ⚡ **Flash** | Flash recovery, boot, vendor, system, vbmeta, full ROM ZIPs via Fastboot or ADB Sideload. Includes wipe operations. Per-mode warnings, safety checklist, and command preview before anything runs. |
+| 🗑 **Debloat** | Simple mode with OEM presets (Google, Xiaomi, Samsung, OnePlus, OPPO/Realme, AOSP). Advanced mode lists every package on the device with Canta-style safety flags 🟢⭐🟡🔴 and descriptions. |
+| 📱 **Device** | Read all `getprop` values and `fastboot getvar all` output in one click. |
+| 🔄 **Reboot** | ADB and Fastboot reboot targets — System, Recovery, Bootloader, Fastboot userspace, Sideload, Power Off, and temp-boot an image without flashing. |
+| 🔧 **ADB Tools** | Screenshot, file push/pull, APK install/uninstall, live Logcat viewer with tag and priority filters. |
+| 💻 **Shell** | Run any ADB or Fastboot command directly. Quoted arguments work correctly. Quick-command shortcuts for common tasks. |
 
 ---
 
@@ -59,20 +61,6 @@ source ~/.bashrc
 ```
 
 ---
-
-## ⚡ Flash Tab
-
-### Supported Flash Modes
-
-| Mode | Command | Partition | Data Erased? |
-|------|---------|-----------|--------------|
-| Flash Recovery | `fastboot flash recovery` | recovery | ❌ No |
-| Flash Boot / Kernel | `fastboot flash boot` | boot | ❌ No |
-| Flash Vendor Image | `fastboot flash vendor` | vendor | ❌ No |
-| Flash System Image | `fastboot flash system` | system | ❌ No |
-| Disable vbmeta & Flash | `fastboot --disable-verity --disable-verification flash vbmeta` | vbmeta | ❌ No (disables AVB) |
-| Full ROM Package | `fastboot update` | multiple | ⚠️ ZIP-dependent |
-| ADB Sideload | `adb sideload` | via Recovery | ⚠️ Manual in Recovery |
 
 ### How to Flash
 
@@ -263,14 +251,21 @@ The bootloader is locked. You must unlock the bootloader first (Settings → Dev
 - Try re-enabling after a reboot if the device behaves unexpectedly
 - System apps marked 🔴 Unsafe should never be disabled
 
-
-## 🙏 Credits
-
-- [Universal Android Debloater (UAD)](https://github.com/0x192/universal-android-debloater) — package list inspiration
-- [Canta](https://github.com/samolego/Canta) — safety flag system inspiration
-- [Android Open Source Project](https://source.android.com/) — ADB & Fastboot
-- - Google themselves and everyone who gave me inspiration for making this tool
-
+## Credits
+ 
+**Built by [auratech0](https://github.com/auratech0)**
+— concept, design, code, and every bug fix at 2am.
+ 
+| Project | Why |
+|---------|-----|
+| [Universal Android Debloater](https://github.com/0x192/universal-android-debloater) | Debloat preset lists and OEM categories |
+| [Canta](https://github.com/samolego/Canta) | Safety flag system (🟢⭐🟡🔴) |
+| [Android Open Source Project](https://source.android.com/) | ADB & Fastboot tools |
+| [Python](https://www.python.org/) | The language that made zero-dependency cross-platform possible |
+| The Android modding community | For years of knowledge, guides, and XDA threads |
+ 
+Special thanks to everyone who tested, reported bugs, and kept asking for more features.
+ 
 ---
-
+ 
 *Runs on dreams and hopes, made with ♥ by [auratech0](https://github.com/auratech0)*
