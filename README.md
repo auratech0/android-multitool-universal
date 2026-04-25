@@ -1,4 +1,3 @@
-
 # Android Multitool Universal
 
 A Python-based GUI tool for Android devices. Flash ROMs, debloat, manage backups, and run ADB/Fastboot commands without touching a terminal.
@@ -9,7 +8,7 @@ Works on Windows, Linux, and macOS. Uses only the standard library (plus Tkinter
 
 - **Flash**: Flash recovery, boot, vendor, vbmeta, or full ROM zips. Includes safety checklists and command preview.
 - **Debloat**: Remove bloatware with safety flags (Safe, Recommended, Caution, Unsafe). Includes presets for Google, Xiaomi, Samsung, OnePlus, and AOSP.
-- **Device Info**: Read `getprop` and `fastboot getvar` values in one click.
+- **Device Info**: Read getprop and fastboot getvar values in one click.
 - **Reboot Controls**: Reboot to system, recovery, bootloader, sideload, or power off. Also supports temp booting an image.
 - **ADB Tools**: Screenshots, file push/pull, APK install/uninstall, and a live Logcat viewer.
 - **Shell**: Run any ADB or Fastboot command with proper argument handling.
@@ -26,17 +25,11 @@ Works on Windows, Linux, and macOS. Uses only the standard library (plus Tkinter
 ## Installation
 
 1. Clone the repository:
-
-
-git clone https://github.com/auratech0/android-multitool-universal
-cd android-multitool-universal
-
+   git clone https://github.com/auratech0/android-multitool-universal
+   cd android-multitool-universal
 
 2. Run the script:
-
-python android_multitool.py
-
-
+   python android_multitool.py
 
 No extra dependencies are required. The tool uses only the Python standard library.
 
@@ -51,8 +44,8 @@ No extra dependencies are required. The tool uses only the Python standard libra
 
 ## Safety Notes
 
-- The tool never passes the `-w` (wipe) flag to Fastboot.
-- It does not run OEM `flash_all` scripts, which usually wipe user data.
+- The tool never passes the -w (wipe) flag to Fastboot.
+- It does not run OEM flash_all scripts, which usually wipe user data.
 - A command preview is shown before any flash operation.
 - Destructive actions require a second confirmation.
 
