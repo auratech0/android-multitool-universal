@@ -24,7 +24,8 @@ License: GNU GPL v3
 
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
-import subprocess, os, threading, platform, datetime, sys, shutil, shlex, queue
+import subprocess, os, threading, platform, sys, shutil, shlex, queue
+from datetime import datetime
 import json, hashlib, zipfile, tempfile, time, struct, socket, urllib.request
 import urllib.parse, ssl, base64, re, csv, webbrowser
 from pathlib import Path
@@ -254,6 +255,9 @@ class AndroidMultitool:
         
         # Bind keyboard shortcuts
         self._bind_shortcuts()
+        self.status_label = tk.Label(self.root, text="Ready")
+        self.compat_text = None
+        self.rom_listbox = None
         
         # Log startup
         self._log(f"{APP_NAME} v{VERSION} started", "success")
@@ -296,6 +300,10 @@ class AndroidMultitool:
             self._build_page_content(name, page)
         
         # Show default page
+        sb = tk.Frame(self.root, bg=C['surface2'], height=25)
+        sb.pack(fill="x", side="bottom")
+        self.status_label = tk.Label(sb, text="Ready", bg=C['surface2'], fg=C['text2'])
+        self.status_label.pack(side="left", padx=10)
         self._show_page("Dashboard")
         
         # Bottom status bar
@@ -938,7 +946,7 @@ License: GNU GPL v3
     
     def _log(self, message, level="info"):
         """Log message to console and activity log"""
-        timestamp = datetime.datetime.now().strftime("%H:%M:%S")
+        timestamp = datetime.now().strftime("%H:%M:%S")
         colors = {"info": C['info'], "success": C['success'], "warn": C['warning'], 
                  "error": C['error'], "dim": C['muted']}
         color = colors.get(level, C['text2'])
@@ -976,7 +984,7 @@ License: GNU GPL v3
     
     def _update_clock(self):
         """Update clock in status bar"""
-        now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         self.time_label.config(text=now)
         self.root.after(1000, self._update_clock)
     
@@ -1067,6 +1075,9 @@ License: GNU GPL v3
                 self.rom_listbox.insert(tk.END, device)
     
     def _open_rom_page(self):
+        if not hasattr(self, 'rom_listbox') or not self.rom_listbox:
+            self._log("ROM list not ready", "warn")
+            return
         """Open ROM download page in browser"""
         selection = self.rom_listbox.curselection()
         if not selection:
@@ -1081,6 +1092,9 @@ License: GNU GPL v3
             self._log(f"Opening ROM page: {url}", "info")
     
     def _check_compatibility(self):
+        if not hasattr(self, 'compat_text') or not self.compat_text:
+            self._log("Wait for page to load", "warn")
+            return
         """Check if selected ROM is compatible with device"""
         self._log("Checking compatibility...", "info")
         if not self.device.codename:
@@ -1181,7 +1195,7 @@ License: GNU GPL v3
     
     def _quick_backup(self):
         """Quick backup before flashing"""
-        backup_name = f"pre_flash_backup_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        backup_name = f"pre_flash_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         backup_path = self.backup_dir / backup_name
         backup_path.mkdir(exist_ok=True)
         
@@ -1220,7 +1234,7 @@ License: GNU GPL v3
     
     def _do_backup(self):
         """Background backup"""
-        backup_name = f"backup_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}"
+        backup_name = f"backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
         backup_path = self.backup_dir / backup_name
         backup_path.mkdir(exist_ok=True)
         
@@ -1400,7 +1414,7 @@ License: GNU GPL v3
     
     def _do_screenshot(self):
         """Background screenshot"""
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         local_path = f"screenshot_{timestamp}.png"
         
         rc, _, err = adb("shell", "screencap", "-p", "/sdcard/screenshot.png")
@@ -1424,7 +1438,7 @@ License: GNU GPL v3
     
     def _do_screen_record(self):
         """Background screen recording"""
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         device_path = f"/sdcard/record_{timestamp}.mp4"
         local_path = f"screen_record_{timestamp}.mp4"
         
@@ -1478,10 +1492,7 @@ License: GNU GPL v3
         
         def _fetch_logcat():
             rc, out, _ = adb("logcat", "-d")
-            if rc == 0:
-                text_widget.insert("1.0", out)
-            else:
-                text_widget.insert("1.0", "Failed to fetch logcat")
+            self.root.after(0, lambda: text_widget.insert("1.0", out if rc == 0 else "Failed"))
         
         threading.Thread(target=_fetch_logcat, daemon=True).start()
     
@@ -1611,7 +1622,7 @@ License: GNU GPL v3
             monitor_text += f"CPU Info:\n{cpu_info[:500]}\n\n"
             monitor_text += f"Memory:\n{mem_info}\n\n"
             monitor_text += f"Battery:\n{battery_info}\n"
-            monitor_text += f"\nLast updated: {datetime.datetime.now().strftime('%H:%M:%S')}"
+            monitor_text += f"\nLast updated: {datetime.now().strftime('%H:%M:%S')}"
             
             self._ui_update(lambda: self.perf_text.delete("1.0", tk.END))
             self._ui_update(lambda: self.perf_text.insert("1.0", monitor_text))
