@@ -1,4 +1,4 @@
-```markdown
+
 # Android Multitool Universal
 
 A Python-based GUI tool for Android devices. Flash ROMs, debloat, manage backups, and run ADB/Fastboot commands without touching a terminal.
@@ -61,4 +61,3 @@ No extra dependencies are required. The tool uses only the Python standard libra
 Built by auratech0 (alexandertech99 on TikTok).
 
 Thanks to the Universal Android Debloater and Canta projects for the debloat presets and safety flag system, and to the Android modding community on XDA.
-```
