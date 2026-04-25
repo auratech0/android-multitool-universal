@@ -1,11 +1,10 @@
-No pip packages required.
- 
-You need:
-  1. Python 3.7+          https://python.org
-  2. Android Platform Tools (adb + fastboot)
-  https://developer.android.com/tools/releases/platform-tools
+# Android Multitool Universal
+# This tool uses only the Python standard library.
+# No external packages are required to run the core functionality.
 
-Linux only — if tkinter is missing:
-  sudo apt install python3-tk
+# Optional dependencies (not required):
+# psutil - for performance monitoring in the Device Tools tab
+# Pillow - for better image handling in screenshots
 
-Please make sure you have these packages before running, make sure sure Android Platform Tools and Python are added to PATH
+# To install optional features, run:
+# pip install psutil Pillow
